@@ -26,7 +26,10 @@ app.mount('/static', StaticFiles(directory='app/static'))
 
 
 async def download_file(url, dest):
+    print(dest) #DEBUG
+    print(dest.exists()) #DEBUG
     if dest.exists(): return
+    print(url) #DEBUG
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as response:
             data = await response.read()
@@ -38,11 +41,11 @@ async def setup_learner():
     await download_file(export_file_url, path / export_file_name)
     try:
         learn = load_learner(path, export_file_name)        
-        print(path)
-        print(export_file_name)
-        print(type(learn))
-        print(learn)
-        print(export_file_url)
+        print(path) #DEBUG
+        print(export_file_name) #DEBUG
+        print(type(learn)) #DEBUG
+        print(learn) #DEBUG
+        print(export_file_url) #DEBUG
         return learn
     except RuntimeError as e:
         if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
