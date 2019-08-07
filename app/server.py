@@ -16,7 +16,7 @@ from starlette.staticfiles import StaticFiles
 export_file_url = 'https://storage.googleapis.com/all-planes-images/best_planenet_fastai.pth'
 export_file_name = 'best_planenet_fastai.pth'
 
-classes ['Plane_1','Plane_2','Plane_3']
+classes = ['Plane_1','Plane_2','Plane_3']
 
 path = Path(__file__).parent
 
